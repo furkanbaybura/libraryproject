@@ -1,0 +1,35 @@
+form{
+    background-color: #FDA403;
+    width: 350px;
+    padding: 15px;
+    margin: 30px auto;
+    border-radius: 7%;
+    text-align: center;
+    input,select,textarea{
+        display: block;
+        width: 100%;
+        margin-bottom: 15px;
+        padding: 5px 10px;
+        border-radius: 5%;
+        border: 1px solid black
+    }
+    textarea{
+        height: 150px;
+    }
+    input[type="Submit"]{
+        width: 50%;
+        position: relative;
+        left: 170px;
+        padding: 10px;
+        cursor: pointer;
+        transition: .5s;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        &:hover{
+            background-color: #E8751A;
+            color:white
+        }
+    }
+
+}
