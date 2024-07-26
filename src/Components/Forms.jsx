@@ -1,48 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import '../assets/Style/Form.scss'
-const Forms = ({kitapEkle,kitaplar,secilenKitap}) => {
-  const [kitapAdi,setKitapAdi] = useState("");
-  const [kitapYazari,setKitapYazari] = useState("");
-  const [kitapKategorisi,setKitapKategorisi] = useState("Kategori Seçiniz");
-  const [kitapSayfaSayisi,setKitapSayfaSayisi] = useState("");
-  const [kitapResmi,setKitapResmi] = useState("");
-  const [kitapAciklamasi,setKitapAciklamasi] = useState("");
+import DataContext from '../context/DataContext'
+const Forms = () => {
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    kitapEkle({
-      id:(Number(kitaplar[kitaplar.length-1].id)+1).toString(),
-      kitapAdi:kitapAdi,
-      kitapYazari:kitapYazari,
-      kitapKategorisi:kitapKategorisi,
-      kitapSayfaSayisi:kitapSayfaSayisi,
-      kitapResmi:kitapResmi,
-      kitapAciklamasi:kitapAciklamasi
-    });
-    setKitapAdi("");
-    setKitapYazari("");
-    setKitapKategorisi("Kategori Seçiniz");
-    setKitapSayfaSayisi("");
-    setKitapResmi("");
-    setKitapAciklamasi("");
+  const {kitapEkle,kitaplar,secilenKitap,
+    kitapAdi,
+    kitapYazari,
+    kitapKategorisi,
+    kitapResmi,
+    kitapSayfaSayisi,
+    kitapAciklamasi,
+    setKitapAdi,
+    setKitapYazari,
+    setKitapKategorisi,
+    setKitapResmi,
+    setKitapSayfaSayisi,
+    setKitapAciklamasi,
+    handleSubmit
+  } = useContext(DataContext);
 
-
-
-  }
-  useEffect(()=>{
-    if(secilenKitap){
-      setKitapAdi(secilenKitap.kitapAdi);
-      setKitapYazari(secilenKitap.kitapYazari);
-      setKitapKategorisi(secilenKitap.kitapKategorisi);
-      setKitapSayfaSayisi(secilenKitap.kitapSayfaSayisi);
-      setKitapResmi(secilenKitap.kitapResmi);
-      setKitapAciklamasi(secilenKitap.kitapAciklamasi);
-    }
-
-  },[secilenKitap]
-
-
-)
   return (
     <form onSubmit={handleSubmit}>
       <h3>{secilenKitap?"Kitabı Güncelle":"Kitap Ekle"}</h3>
